@@ -9,6 +9,8 @@ fn main() {
         println!("4. Division");
         println!("5. Exponentiation");
         println!("6. Root");
+        println!("7. Logarithm");
+        println!("8. Absolute value");
         println!("0. Exit");
 
         let mut text = String::new();
@@ -35,6 +37,8 @@ fn main() {
             4 => dzielenie(),
             5 => potegowanie(),
             6 => pierwiastkowanie(),
+            7 => logarytmy(),
+            8 => ab(),
             _ => println!("Error, try again."),
         }
     }
@@ -171,4 +175,37 @@ fn pierwiastkowanie(){
 
     // Wyświetlenie wyniku
     println!("Result: {}",result);
+}
+
+fn logarytmy(){
+    println!("Enter the base of the logarithm: ");
+    let mut base = String::new();
+    io::stdin().read_line(&mut base).expect("Error ");
+    let base: f64 = base.trim().parse().expect("Error");
+
+
+    println!("Enter the logarithmic number: ");
+    let mut log = String::new();
+    io::stdin().read_line(&mut log).expect("Error");
+    let log: f64 = log.trim().parse().expect("Error");
+
+
+    let result = log.ln() / base.ln();
+
+
+    println!("Result: {}",result);
+}
+
+fn ab(){
+    println!("Enter the number: ");
+    let mut ab:String = String::new();
+    io::stdin()
+        .read_line(&mut ab)
+        .expect("Error");
+
+    let ab:f64 = ab.trim().parse().expect("Error");
+
+    let result:f64 = ab.abs();
+
+    println!("Result: {}", result);
 }
