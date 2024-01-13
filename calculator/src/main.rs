@@ -2,31 +2,31 @@ use std::io;
 
 fn main() {
     loop {
-        println!("---Kalkulator---");
-        println!("1. Dodawanie");
-        println!("2. Odejmowanie");
-        println!("3. Mnożenie");
-        println!("4. Dzielenie");
-        println!("5. Potęgowanie");
-        println!("6. Pierwiastkowanie");
-        println!("0. Wyjście");
+        println!("---Calculator---");
+        println!("1. Addition");
+        println!("2. Subtraction");
+        println!("3. Multiplicatione");
+        println!("4. Division");
+        println!("5. Exponentiation");
+        println!("6. Root");
+        println!("0. Exit");
 
         let mut text = String::new();
         io::stdin()
             .read_line(&mut text)
-            .expect("Błąd");
+            .expect("Error");
 
         let choose: i8 = match text.trim().parse() {
             Ok(value) => value,
             Err(_) => {
-                println!("Nieprawidłowe wejście. Spróbuj ponownie.");
+                println!("Error, try again.");
                 continue;
             }
         };
 
         match choose {
             0 => {
-                println!("Do widzenia!");
+                println!("End.");
                 break;
             }
             1 => dodawanie(),
@@ -35,140 +35,140 @@ fn main() {
             4 => dzielenie(),
             5 => potegowanie(),
             6 => pierwiastkowanie(),
-            _ => println!("Nieprawidłowy wybór. Spróbuj ponownie."),
+            _ => println!("Error, try again."),
         }
     }
 }
 
-// ... (rest of your functions remain unchanged)
+
 
 
 
 fn dodawanie() {
-    println!("Podaj 1 liczbę: ");
+    println!("Set a first number: ");
     let mut text2 = String::new();
     io::stdin()
         .read_line(&mut text2)
-        .expect("Błąd");
+        .expect("Error");
     let choose2:i8 = text2.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
-    println!("Podaj 2 liczbę: ");
+    println!("Set a second number: ");
     let mut text3 = String::new();
     io::stdin()
         .read_line(&mut text3)
-        .expect("Błąd");
+        .expect("Error");
     let choose3:i8 = text3.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
     let mut wynik = choose2+choose3;
 
-    println!("Wynik: {}",wynik);
+    println!("Result: {}",wynik);
 }
 
 fn odejmowanie() {
-    println!("Podaj 1 liczbę: ");
+    println!("Set a first number: ");
     let mut text2 = String::new();
     io::stdin()
         .read_line(&mut text2)
-        .expect("Błąd");
+        .expect("Error");
     let choose2:i8 = text2.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
-    println!("Podaj 2 liczbę: ");
+    println!("Set a second number: ");
     let mut text3 = String::new();
     io::stdin()
         .read_line(&mut text3)
-        .expect("Błąd");
+        .expect("Error");
     let choose3:i8 = text3.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
     let mut wynik = choose2-choose3;
 
-    println!("Wynik: {}",wynik);
+    println!("Result: {}",wynik);
 }
 
 fn mnozenie() {
-    println!("Podaj 1 liczbę: ");
+    println!("Set a first number: ");
     let mut text2 = String::new();
     io::stdin()
         .read_line(&mut text2)
-        .expect("Błąd");
+        .expect("Error");
     let choose2:i8 = text2.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
-    println!("Podaj 2 liczbę: ");
+    println!("Set a second number: ");
     let mut text3 = String::new();
     io::stdin()
         .read_line(&mut text3)
-        .expect("Błąd");
+        .expect("Error");
     let choose3:i8 = text3.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
     let mut wynik = choose2*choose3;
 
-    println!("Wynik: {}",wynik);
+    println!("Result: {}",wynik);
 }
 
 fn dzielenie(){
-    println!("Podaj 1 liczbę: ");
+    println!("Set a first number: ");
     let mut text2 = String::new();
     io::stdin()
         .read_line(&mut text2)
-        .expect("Błąd");
+        .expect("Error");
     let choose2:i8 = text2.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
-    println!("Podaj 2 liczbę: ");
+    println!("Set a second number: ");
     let mut text3 = String::new();
     io::stdin()
         .read_line(&mut text3)
-        .expect("Błąd");
+        .expect("Error");
     let choose3:i8 = text3.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
     let mut wynik = choose2/choose3;
 
-    println!("Wynik: {}",wynik);
+    println!("Result: {}",wynik);
 }
 
 fn potegowanie(){
-    println!("Podaj podstawę potęgi: ");
+    println!("Give the base of the power: ");
     let mut text2 = String::new();
     io::stdin()
         .read_line(&mut text2)
-        .expect("Błąd");
+        .expect("Error");
     let choose2:i8 = text2.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
-    println!("Podaj wykładnik potęgi: ");
+    println!("Give the exponent of the power: ");
     let mut text3 = String::new();
     io::stdin()
         .read_line(&mut text3)
-        .expect("Błąd");
+        .expect("Error");
     let choose3:i8 = text3.trim().parse()
-        .expect("Błąd");
+        .expect("Error");
 
     let mut wynik = choose2.pow(choose3.try_into().unwrap());
 
-    println!("Wynik: {}",wynik);
+    println!("Result: {}",wynik);
 }
 
 fn pierwiastkowanie(){
-    println!("Podaj stopień pierwiastka:");
+    println!("Enter the degree of the element:");
     let mut degree = String::new();
-    io::stdin().read_line(&mut degree).expect("Błąd ");
-    let degree: f64 = degree.trim().parse().expect("Błą");
+    io::stdin().read_line(&mut degree).expect("Error ");
+    let degree: f64 = degree.trim().parse().expect("Error");
 
     // Pobranie liczby od użytkownika
-    println!("Podaj liczbę do pierwiastkowania:");
+    println!("Enter the number under the square root:");
     let mut number = String::new();
-    io::stdin().read_line(&mut number).expect("Błąd");
-    let number: f64 = number.trim().parse().expect("Błą");
+    io::stdin().read_line(&mut number).expect("Error");
+    let number: f64 = number.trim().parse().expect("Error");
 
     // Obliczenie pierwiastka
     let result = number.powf(1.0 / degree);
 
     // Wyświetlenie wyniku
-    println!("WyniK: {}",result);
+    println!("Result: {}",result);
 }
