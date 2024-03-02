@@ -31,13 +31,13 @@ fn main() {
                 println!("End.");
                 break;
             }
-            1 => dodawanie(),
-            2 => odejmowanie(),
-            3 => mnozenie(),
-            4 => dzielenie(),
-            5 => potegowanie(),
-            6 => pierwiastkowanie(),
-            7 => logarytmy(),
+            1 => addition(),
+            2 => subtraction(),
+            3 => multiplicatione(),
+            4 => division(),
+            5 => exponentiation(),
+            6 => root(),
+            7 => logarithm(),
             8 => ab(),
             _ => println!("Error, try again."),
         }
@@ -48,7 +48,7 @@ fn main() {
 
 
 
-fn dodawanie() {
+fn addition() {
     println!("Set a first number: ");
     let mut text = String::new();
     io::stdin()
@@ -70,7 +70,7 @@ fn dodawanie() {
     println!("Result: {}",result);
 }
 
-fn odejmowanie() {
+fn subtraction() {
     println!("Set a first number: ");
     let mut text = String::new();
     io::stdin()
@@ -92,7 +92,7 @@ fn odejmowanie() {
     println!("Result: {}",result);
 }
 
-fn mnozenie() {
+fn multiplicatione() {
     println!("Set a first number: ");
     let mut text = String::new();
     io::stdin()
@@ -114,7 +114,7 @@ fn mnozenie() {
     println!("Result: {}",result);
 }
 
-fn dzielenie(){
+fn division(){
     println!("Set a first number: ");
     let mut text = String::new();
     io::stdin()
@@ -136,7 +136,7 @@ fn dzielenie(){
     println!("Result: {}",result);
 }
 
-fn potegowanie(){
+fn exponentiation(){
     println!("Give the base of the power: ");
     let mut text = String::new();
     io::stdin()
@@ -158,7 +158,7 @@ fn potegowanie(){
     println!("Result: {}",result);
 }
 
-fn pierwiastkowanie(){
+fn root(){
     println!("Enter the degree of the element:");
     let mut degree = String::new();
     io::stdin().read_line(&mut degree).expect("Error ");
@@ -177,7 +177,7 @@ fn pierwiastkowanie(){
     println!("Result: {}",result);
 }
 
-fn logarytmy(){
+fn logarithm(){
     println!("Enter the base of the logarithm: ");
     let mut base = String::new();
     io::stdin().read_line(&mut base).expect("Error ");
