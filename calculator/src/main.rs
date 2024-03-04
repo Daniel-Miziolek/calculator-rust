@@ -1,214 +1,73 @@
 use std::io;
 
+struct MathematicalOperations {
+    number1: i128,
+    mathematical_operator: char,
+    number2: i128,
+}
+
 fn main() {
-    loop {
-        println!("---Calculator---");
-        println!("1. Addition");
-        println!("2. Subtraction");
-        println!("3. Multiplicatione");
-        println!("4. Division");
-        println!("5. Exponentiation");
-        println!("6. Root");
-        println!("7. Logarithm");
-        println!("8. Absolute value");
-        println!("0. Exit");
+    println!("---RUST CALCULATOR---");
 
-        let mut text = String::new();
-        io::stdin()
-            .read_line(&mut text)
-            .expect("Error");
+    println!("Enter the first number:");
+    let mut number1 = String::new();
+    io::stdin()
+        .read_line(&mut number1)
+        .expect("Error");
 
-        let choose: i8 = match text.trim().parse() {
-            Ok(value) => value,
-            Err(_) => {
-                println!("Error, try again.");
-                continue;
-            }
-        };
+    let number1: i128 = number1.trim().parse().expect("Error");
 
-        match choose {
-            0 => {
-                println!("End.");
-                break;
-            }
-            1 => addition(),
-            2 => subtraction(),
-            3 => multiplicatione(),
-            4 => division(),
-            5 => exponentiation(),
-            6 => root(),
-            7 => logarithm(),
-            8 => ab(),
-            _ => println!("Error, try again."),
+    println!("Enter the mathematical operator:");
+    let mut mathematical_operator = String::new();
+    io::stdin()
+        .read_line(&mut mathematical_operator)
+        .expect("Error");
+
+    let mathematical_operator = mathematical_operator.trim().chars().next().expect("Error");
+
+    println!("Enter the second number:");
+    let mut number2 = String::new();
+    io::stdin()
+        .read_line(&mut number2)
+        .expect("Error");
+
+    let number2: i128 = number2.trim().parse().expect("Error");
+
+    let operation = MathematicalOperations {
+        number1,
+        mathematical_operator,
+        number2,
+    };
+
+    let result = match operation.mathematical_operator {
+        '+' => addition(operation.number1, operation.number2),
+        '-' => subtraction(operation.number1, operation.number2),
+        '*' => multiplication(operation.number1, operation.number2),
+        '/' => division(operation.number1, operation.number2),
+        _ => {
+            println!("Invalid operator");
+            return;
         }
-    }
-}
-
-
-
-
-
-fn addition() {
-    println!("Set a first number: ");
-    let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Error");
-    let n1:i8 = text.trim().parse()
-        .expect("Error");
-
-    println!("Set a second number: ");
-    let mut text2 = String::new();
-    io::stdin()
-        .read_line(&mut text2)
-        .expect("Error");
-    let n2:i8 = text2.trim().parse()
-        .expect("Error");
-
-    let result = n1+n2;
-
-    println!("Result: {}",result);
-}
-
-fn subtraction() {
-    println!("Set a first number: ");
-    let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Error");
-    let n1:i8 = text.trim().parse()
-        .expect("Error");
-
-    println!("Set a second number: ");
-    let mut text2 = String::new();
-    io::stdin()
-        .read_line(&mut text2)
-        .expect("Error");
-    let n2:i8 = text2.trim().parse()
-        .expect("Error");
-
-    let result = n1-n2;
-
-    println!("Result: {}",result);
-}
-
-fn multiplicatione() {
-    println!("Set a first number: ");
-    let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Error");
-    let n1:i8 = text.trim().parse()
-        .expect("Error");
-
-    println!("Set a second number: ");
-    let mut text2 = String::new();
-    io::stdin()
-        .read_line(&mut text2)
-        .expect("Error");
-    let n2:i8 = text2.trim().parse()
-        .expect("Error");
-
-    let result = n1*n2;
-
-    println!("Result: {}",result);
-}
-
-fn division(){
-    println!("Set a first number: ");
-    let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Error");
-    let n1:i8 = text.trim().parse()
-        .expect("Error");
-
-    println!("Set a second number: ");
-    let mut text2 = String::new();
-    io::stdin()
-        .read_line(&mut text2)
-        .expect("Error");
-    let n2:i8 = text2.trim().parse()
-        .expect("Error");
-
-    let result = n1/n2;
-
-    println!("Result: {}",result);
-}
-
-fn exponentiation(){
-    println!("Give the base of the power: ");
-    let mut text = String::new();
-    io::stdin()
-        .read_line(&mut text)
-        .expect("Error");
-    let n1:i8 = text.trim().parse()
-        .expect("Error");
-
-    println!("Give the exponent of the power: ");
-    let mut text2 = String::new();
-    io::stdin()
-        .read_line(&mut text2)
-        .expect("Error");
-    let n2:i8 = text2.trim().parse()
-        .expect("Error");
-
-    let result = n1.pow(n2.try_into().unwrap());
-
-    println!("Result: {}",result);
-}
-
-fn root(){
-    println!("Enter the degree of the element:");
-    let mut degree = String::new();
-    io::stdin().read_line(&mut degree).expect("Error ");
-    let degree: f64 = degree.trim().parse().expect("Error");
-
-    
-    println!("Enter the number under the square root:");
-    let mut number = String::new();
-    io::stdin().read_line(&mut number).expect("Error");
-    let number: f64 = number.trim().parse().expect("Error");
-
-    
-    let result = number.powf(1.0 / degree);
-
-   
-    println!("Result: {}",result);
-}
-
-fn logarithm(){
-    println!("Enter the base of the logarithm: ");
-    let mut base = String::new();
-    io::stdin().read_line(&mut base).expect("Error ");
-    let base: f64 = base.trim().parse().expect("Error");
-
-
-    println!("Enter the logarithmic number: ");
-    let mut log = String::new();
-    io::stdin().read_line(&mut log).expect("Error");
-    let log: f64 = log.trim().parse().expect("Error");
-
-
-    let result = log.ln() / base.ln();
-
-
-    println!("Result: {}",result);
-}
-
-fn ab(){
-    println!("Enter the number: ");
-    let mut ab:String = String::new();
-    io::stdin()
-        .read_line(&mut ab)
-        .expect("Error");
-
-    let ab:f64 = ab.trim().parse().expect("Error");
-
-    let result:f64 = ab.abs();
+    };
 
     println!("Result: {}", result);
 }
 
+fn addition(x: i128, y: i128) -> i128 {
+    x + y
+}
 
+fn subtraction(x: i128, y: i128) -> i128 {
+    x - y
+}
 
+fn multiplication(x: i128, y: i128) -> i128 {
+    x * y
+}
+
+fn division(x: i128, y: i128) -> i128 {
+    if y == 0 {
+        panic!("Division by zero");
+    }
+    x / y
+}
