@@ -9,29 +9,17 @@ struct MathematicalOperations {
 fn main() {
     println!("---RUST CALCULATOR---");
 
-    println!("Enter the first number:");
-    let mut number1 = String::new();
+    println!("Enter the expression (e.g., 2 + 2):");
+    let mut input = String::new();
     io::stdin()
-        .read_line(&mut number1)
+        .read_line(&mut input)
         .expect("Error");
 
-    let number1: i128 = number1.trim().parse().expect("Error");
+    let parts: Vec<&str> = input.trim().split_whitespace().collect();
 
-    println!("Enter the mathematical operator:");
-    let mut mathematical_operator = String::new();
-    io::stdin()
-        .read_line(&mut mathematical_operator)
-        .expect("Error");
-
-    let mathematical_operator = mathematical_operator.trim().chars().next().expect("Error");
-
-    println!("Enter the second number:");
-    let mut number2 = String::new();
-    io::stdin()
-        .read_line(&mut number2)
-        .expect("Error");
-
-    let number2: i128 = number2.trim().parse().expect("Error");
+    let number1: i128 = parts[0].parse().expect("Invalid number");
+    let mathematical_operator = parts[1].chars().next().expect("Invalid operator");
+    let number2: i128 = parts[2].parse().expect("Invalid number");
 
     let operation = MathematicalOperations {
         number1,
@@ -59,11 +47,7 @@ fn addition(x: i128, y: i128) -> i128 {
 }
 
 fn exponentiation(x: i128, y: i128) -> i128 {
-    let mut result = 1;
-    for _ in 0..y {
-        result *= x;
-    }
-    result
+    x.pow(y as u32)
 }
 
 fn subtraction(x: i128, y: i128) -> i128 {
