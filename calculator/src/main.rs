@@ -44,6 +44,7 @@ fn main() {
         '-' => subtraction(operation.number1, operation.number2),
         '*' => multiplication(operation.number1, operation.number2),
         '/' => division(operation.number1, operation.number2),
+        '^' => exponentiation(operation.number1, operation.number2),
         _ => {
             println!("Invalid operator");
             return;
@@ -55,6 +56,14 @@ fn main() {
 
 fn addition(x: i128, y: i128) -> i128 {
     x + y
+}
+
+fn exponentiation(x: i128, y: i128) -> i128 {
+    let mut result = 1;
+    for _ in 0..y {
+        result *= x;
+    }
+    result
 }
 
 fn subtraction(x: i128, y: i128) -> i128 {
